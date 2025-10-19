@@ -1,9 +1,10 @@
 class Driver(
-    fullName: String,
-    age: Int,
+    var fullName: String,
+    var age: Int,
     override var currentSpeed: Double,
     var directionAngle: Double
 ) : Movable {
+
     override var x: Double = 0.0
     override var y: Double = 0.0
 
