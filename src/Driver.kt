@@ -1,9 +1,12 @@
 class Driver(
     fullName: String,
     age: Int,
-    currentSpeed: Double,
+    override var currentSpeed: Double,
     var directionAngle: Double
-) : Human(fullName, age, currentSpeed) {
+) : Movable {
+    override var x: Double = 0.0
+    override var y: Double = 0.0
+
     override fun move() {
         val angleRad = Math.toRadians(directionAngle)
         x += currentSpeed * kotlin.math.cos(angleRad)

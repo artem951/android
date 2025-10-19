@@ -3,14 +3,14 @@ fun main() {
     val human2 = Human("Пётр Петров", 30, 1.5)
     val driver = Driver("Алексей Водитель", 40, 2.0, 0.0)
 
-    val humans = listOf(human1, human2, driver)
+    val movers: List<Movable> = listOf(human1, human2, driver)
 
-    val threads = humans.map { human ->
+    val threads = movers.map { mover ->
         Thread {
             repeat(5) {
-                human.move()
-                println("${Thread.currentThread().name}: $human")
-                Thread.sleep(500)
+                mover.move()
+                println("${Thread.currentThread().name}: $mover")
+                Thread.sleep(400)
             }
         }
     }
