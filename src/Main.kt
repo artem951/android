@@ -1,14 +1,22 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+    val human1 = Human("Иван Иванов", 25, 1.0)
+    val human2 = Human("Пётр Петров", 30, 1.5)
+    val driver = Driver("Алексей Водитель", 40, 2.0, 0.0)
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
+    val humans = listOf(human1, human2, driver)
+
+    val threads = humans.map { human ->
+        Thread {
+            repeat(5) {
+                human.move()
+                println("${Thread.currentThread().name}: $human")
+                Thread.sleep(500)
+            }
+        }
     }
+
+    threads.forEach { it.start() }
+    threads.forEach { it.join() }
+
+    println("Симуляция завершена ✅")
 }
