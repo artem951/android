@@ -18,5 +18,5 @@ fun main() {
     threads.forEach { it.start() }
     threads.forEach { it.join() }
 
-    println("Симуляция завершена ✅")
+    println("Симуляция завершена ")
 }
